@@ -1,0 +1,41 @@
+// Abbod369 - Latakia University..
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    int x , m , n;
+    bool ok;
+    
+    cin >> t;
+    while(t--)
+    {
+        ok = false;
+        cin >> x;
+        cin >> m >> n;
+
+        while(m--)
+        {
+            if(x <= 10 * n)
+            {
+                ok = true;
+                break;
+            }
+
+            x = x / 2 + 10;
+        }
+
+        if(x <= 10 * n)
+        ok = true;
+
+        if(ok)
+        cout << "YES" << endl;
+
+        else 
+        cout << "NO" << endl;
+
+    }
+
+    return 0;
+}

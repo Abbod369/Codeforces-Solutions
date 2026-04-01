@@ -1,0 +1,47 @@
+// Abbod369 - Latakia University..
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    string s;
+    int counter;
+    char currentChar;
+    cin >> t;
+    while(t--)
+    {
+        counter = 0;
+        
+        cin >> s;
+
+        currentChar = s[0];
+
+        for(int i = 1; i < s.size(); i++)
+        {
+            if(s[i] != currentChar && s[i] == 'a')
+            {
+                counter++;
+                currentChar = s[i];
+            }
+
+            else if(s[i] != currentChar && s[i] == 'b')
+            {
+                counter--;
+                currentChar = s[i];
+            }
+        }
+
+        if(counter == 1)
+        s[s.size() - 1] = 'b';
+
+        else if(counter == -1)
+        s[s.size() - 1] = 'a';
+
+
+        cout << s << endl;
+
+    }
+
+    return 0;
+}

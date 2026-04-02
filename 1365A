@@ -1,0 +1,65 @@
+// Abbod369 - Latakia University..
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    int n , m;
+    int arr[52][52];
+    int sum;
+    int sumOfRows;
+    int sumOfColumns;
+    int ind1 , ind2;
+    
+    cin >> t;
+    while(t--)
+    {
+        cin >> n >> m;
+
+        sumOfRows = 0;
+        sumOfColumns = 0;
+        ind1 = 1;
+        ind2 = n;
+
+        for(int i = 1; i <= n; i++)
+        for(int j = 1; j <= m; j++)
+        cin >> arr[i][j];
+        
+        while(ind1 <= m)
+        {
+            sum = 0;
+
+            for(int i = n; i > 0; i--)
+            sum +=arr[i][ind1];
+
+            if(sum == 0)
+            sumOfColumns++;
+
+            ind1++;
+
+        }
+
+        while(ind2 > 0)
+        {
+            sum = 0;
+
+            for(int i = 1; i <= m; i++)
+            sum += arr[ind2][i];
+
+            if(sum == 0)
+            sumOfRows++;
+
+            ind2--;
+        }
+
+        if(min(sumOfRows , sumOfColumns) % 2 == 0)
+        cout << "Vivek" << endl;
+
+        else
+        cout << "Ashish" << endl;
+
+    }
+
+    return 0;
+}

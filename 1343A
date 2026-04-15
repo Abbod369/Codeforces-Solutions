@@ -1,0 +1,23 @@
+// Abbod369 - Latakia University..
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    int n , x;
+    int num;
+    cin >> t;
+    while(t--)
+    {
+        cin >> n;
+        num = 4;
+
+        while(n % (num - 1)!= 0)
+        num *= 2;
+
+        cout << n / (num - 1) << endl;
+
+    }
+    return 0;
+}

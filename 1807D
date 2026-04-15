@@ -1,0 +1,45 @@
+// Abbod369 - Latakia University..
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    int n , q;
+    int num;
+    long long arr[200002];
+    int l , r , k;
+    long long sum1;
+    cin >> t;
+    while(t--)
+    {
+        cin >> n >> q;
+        for(int i = 1; i <= n; i++)
+        {
+            cin >> num;
+            arr[i] = arr[i - 1] + num;
+        }
+        
+        while(q--)
+        {
+            sum1 = arr[n];
+
+            cin >> l >> r >> k;
+
+            sum1 -= (arr[r] - arr[l - 1]);
+
+            sum1 += (k * (r - l + 1));
+            
+            if(sum1 & 1)
+            cout << "YES\n";
+
+            else
+            cout << "NO\n";
+        }
+            
+    }
+
+    return 0;
+}

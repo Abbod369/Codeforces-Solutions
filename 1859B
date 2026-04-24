@@ -1,0 +1,52 @@
+// Abbod369 - Latakia University..
+#include <iostream>
+#include <set>
+using namespace std;
+ 
+int main()
+{
+    int t;
+    int n , m;
+    int num;
+    int minVal;
+    int minNext;
+    int index;
+    long long sum;
+    cin >> t;
+    while(t--)
+    {
+        minNext = 1e9;
+        minVal = 1e9;
+        sum = 0;
+        cin >> n;
+        multiset <int> st[n + 1];
+        for(int i = 1; i <= n; i++)
+        {
+            cin >> m;
+            for(int j = 1; j <= m; j++)
+            {
+                cin >> num;
+                st[i].insert(num);
+                if(num < minVal)
+                minVal = num;
+            }
+ 
+            if(*(next(st[i].begin())) < minNext)
+            {
+                
+                minNext = *(next(st[i].begin()));
+                index = i;
+            }
+        }
+ 
+        for(int i = 1; i <= n; i++)
+        if(i != index)
+        sum += *(next(st[i].begin()));
+ 
+        sum += minVal;
+ 
+        cout << sum << endl;
+    }
+ 
+    return 0;
+}

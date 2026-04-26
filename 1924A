@@ -1,0 +1,73 @@
+// Abbod345 - Latakia University..
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    int n , k , m;
+    string s;
+    cin >> t;
+    while(t--)
+    {
+        cin >> n >> k >> m;
+        cin >> s;
+        set <int> st[k];
+
+        for(int i = 0; i < m; i++)
+        st[s[i] - 'a'].insert(i + 1);
+
+        int max = -1;
+        int index = -1;
+        string s2 = "";
+        char element;
+        bool ok = true;
+
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = 0; j < k; j++)
+            {
+                if(st[j].upper_bound(index) != st[j].end())
+                {
+                    if(*st[j].upper_bound(index) > max)
+                    {
+                        max = *st[j].upper_bound(index);
+                        element = ('a' + j);
+                    }
+                }
+
+                else
+                {
+                    element = ('a' + j);
+                    ok = false;
+                    break;
+                }
+            }
+            if(!ok)
+            break;
+
+            index = max;
+            s2 += element;
+        }
+
+        if(ok)
+        cout << "YES" << endl;
+
+        else
+        {
+            for(int i = s2.size(); i < n; i++)
+            s2 += element;
+
+            cout << "NO" << endl;
+            cout << s2 << endl;
+        }
+        
+
+    }
+
+    return 0;
+}

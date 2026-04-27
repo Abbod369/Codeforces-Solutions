@@ -1,0 +1,74 @@
+// Abbod369 - Latakia University..
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    int n , m , k;
+    int num;
+    int counter1 , counter2;
+    bool finalOk;
+    cin >> t;
+    while(t--)
+    {
+        finalOk = true;
+        counter1 = 0;
+        counter2 = 0;
+        cin >> n >> m >> k;
+        bool ok1[k + 1] = {0};
+        bool ok2[k + 2] = {0};
+
+        for(int i = 1; i <= n; i++)
+        {
+            cin >> num;
+            if(num <= k)
+            {
+                if(!ok1[num])
+                {
+                    ok1[num] = true;
+                    counter1++;
+                }
+            }
+        }
+
+        for(int i = 1; i <= m; i++)
+        {
+            cin >> num;
+            if(num <= k)
+            {
+                if(!ok2[num])
+                {
+                    ok2[num] = true;
+                    counter2++;
+                }
+            }
+        }
+
+        
+
+        if(counter1 < k / 2 || counter2 < k / 2)
+        {
+            cout << "NO" << endl;
+            continue;
+        }
+
+        for(int i = 1; i <= k; i++)
+        {
+            if(!ok1[i] && !ok2[i])
+            {
+                finalOk = false;
+                break;
+            }
+        }
+
+        if(finalOk)
+        cout << "YES" << endl;
+
+        else
+        cout << "NO" << endl;
+
+    }
+    
+    return 0;
+}

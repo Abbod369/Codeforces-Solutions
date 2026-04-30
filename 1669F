@@ -8,77 +8,52 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t, n;
-    int arr[200002];
-    int counter1;
-    int counter2;
-    int sum1;
-    int sum2;
+    int t , n;
+    int sumOfFront;
+    int sumOfBack;
+    int FinalSum;
     cin >> t;
     while(t--)
     {
-        counter1 = 0;
-        counter2 = 0;
-        sum1 = 0;
-        sum2 = 0;
+        FinalSum = 0;
         cin >> n;
+        int arr[n + 1];
+
         for(int i = 1; i <= n; i++)
-            cin >> arr[i];
+        cin >> arr[i];
 
-        for(int i = 1, j = n; i < j;)
+        sumOfFront = arr[1];
+        sumOfBack = arr[n];
+
+        for(int i = 1 , j = n; i < j;)
         {
-            if(sum1 > sum2)
+            if(sumOfFront == sumOfBack)
             {
-                sum2 += arr[j];
-                counter1++;
-                j--;
-                
-                if(j == i)
-                {
-                    if(sum2 + arr[j] == sum1)
-                    {
-                        sum2 += arr[j];
-                        counter1++;
-                    }
-
-                    if(sum2 == sum1 + arr[i])
-                    {
-                        sum1 += arr[i];
-                        counter1++;
-                    }
-                }
-                
-                if(sum1 == sum2)
-                counter2 = counter1;
-            }
-
-            if(sum1 <= sum2)
-            {
-                sum1 += arr[i];
-                counter1++;
+                FinalSum = i + (n - (j - 1));
                 i++;
-                if(j == i)
-                {
-                    if(sum2 + arr[j] == sum1)
-                    {
-                        sum2 += arr[j];
-                        counter1++;
-                    }
+                j--;
 
-                    if(sum2 == sum1 + arr[i])
-                    {
-                        sum1 += arr[i];
-                        counter1++;
-                    }
-                }
-                
-                if(sum1 == sum2)
-                counter2 = counter1;
+                sumOfFront += arr[i];
+                sumOfBack += arr[j];
             }
-            
-        }
 
-        cout << counter2 << endl;
+            if(sumOfFront > sumOfBack)
+            {
+                j--;
+                sumOfBack += arr[j];
+                
+            }
+
+            if(sumOfFront < sumOfBack)
+            {
+                i++;
+                sumOfFront += arr[i];
+                
+            }
+        }
+        
+        cout << FinalSum << endl;        
     }
+
     return 0;
 }
